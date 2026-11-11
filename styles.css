@@ -301,3 +301,42 @@ footer a:hover { color: var(--ink); }
 
 /* The foot's download button before the download is open: there, and plainly not a link. */
 .btn[aria-disabled="true"] { opacity: 0.6; cursor: default; pointer-events: none; }
+
+/* ---------- Legal pages (privacy.html, terms.html, refunds.html) ----------
+   The same worksheet, set for reading: one column, a measure a line can be
+   followed across, the short version on a slip of paper at the top. */
+.legal-top { border-bottom: 2px solid var(--ink); background: var(--cream); }
+.legal-top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1rem; }
+.legal-top a.back { font-weight: 700; color: var(--ink-soft); text-decoration: none; }
+.legal-top a.back:hover { color: var(--ink); }
+.legal { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
+.legal h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+.legal .dated { color: var(--ink-soft); margin: 0.6rem 0 2rem; }
+.legal h2 { font-size: 1.55rem; margin: 2.6rem 0 0.7rem; scroll-margin-top: 1rem; }
+.legal h3 { font-size: 1.15rem; margin: 1.6rem 0 0.4rem; line-height: 1.25; }
+.legal p, .legal li { max-width: 68ch; }
+.legal p { margin: 0 0 0.9rem; }
+.legal ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+.legal li { margin-bottom: 0.4rem; }
+.legal a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.legal a:hover { color: var(--board); }
+.legal .short { background: white; border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink); padding: 1.2rem 1.4rem 0.6rem; margin-bottom: 2.4rem; }
+.legal .short h2 { margin-top: 0; font-size: 1.25rem; }
+.legal .scroll { overflow-x: auto; margin: 0 0 1.2rem; }
+.legal table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.95rem; background: white; }
+.legal th, .legal td { border: 2px solid var(--ink); padding: 0.55rem 0.75rem; text-align: left; vertical-align: top; }
+.legal th { font-family: var(--display); font-weight: 600; background: var(--cream-deep); }
+.legal .blank { background: var(--yellow); border-radius: 4px; padding: 0 0.25em; font-weight: 700; }
+footer .legal-links { flex-basis: 100%; font-size: 0.95rem; }
+/* On a phone a three-column table needs sideways scrolling to read. Each row becomes a
+   slip instead: who or what in the heading face, the rest beneath it. */
+@media (max-width: 640px) {
+  .legal .scroll { overflow-x: visible; }
+  .legal table { min-width: 0; background: none; font-size: 1rem; }
+  .legal thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .legal table, .legal tbody, .legal tr, .legal td { display: block; }
+  .legal tr { background: white; border: 2px solid var(--ink); border-radius: 12px; padding: 0.55rem 0.8rem; margin-bottom: 0.6rem; }
+  .legal td { border: 0; padding: 0.1rem 0; }
+  .legal td:first-child { font-family: var(--display); font-weight: 600; }
+  .legal td + td { color: var(--ink-soft); }
+}
