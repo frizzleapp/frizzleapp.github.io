@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Frizzle for Mac</title>
+  <!-- Until launch: keeps the page out of search results while the download is not open.
+       Remove this line on launch day. -->
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Hold two keys and ask out loud. Frizzle looks at what's on your screen and talks you through it, pointing with chalk as it goes. For Mac.">
+  <meta property="og:title" content="Frizzle for Mac">
+  <meta property="og:description" content="A teacher for whatever's on your screen. Hold two keys, ask out loud, and watch the chalk.">
+  <meta property="og:image" content="assets/frizzle-poster.jpg">
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <img src="assets/icon-256.png" alt="" width="34" height="34">
+      Frizzle
+    </a>
+    <nav aria-label="Site">
+      <a href="#how">How it works</a>
+      <a href="#private">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn" href="#download" data-download>Get it for Mac</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>A teacher for whatever's on your screen.</h1>
+        <p class="lede">Hold <span class="keycap">⌥</span><span class="keycap">⌘</span> and ask out loud. Frizzle looks at what you're looking at, answers in a natural voice, and points with chalk as it talks. A lecture, a chart, a stack trace, a diagram, a formula in a spreadsheet.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#download" id="download-top" data-download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            Get Frizzle for Mac
+          </a>
+        </div>
+        <p class="hero-note">Free to start, Frizzle Pro for more. macOS 27 on Apple silicon.</p>
+      </div>
+
+      <div class="film-frame" id="film">
+        <video id="film-video" controls playsinline preload="metadata" poster="assets/frizzle-poster.jpg" aria-label="Fifty seconds of Frizzle at work: a circuit problem, a code file and more, explained in chalk and read aloud">
+          <source src="assets/frizzle.mp4" type="video/mp4">
+          Your browser can't play this video. <a href="assets/frizzle.mp4">Download it</a> instead.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Five screens, the same two keys.</h2>
+        <p class="lede">A calculus lecture, a revenue dashboard, a Python bug, a cell diagram and a spreadsheet. Pick one and watch the chalk.</p>
+      </div>
+      <div class="demo" aria-label="Frizzle explaining five different screens">
+        <div class="stage" id="stage">
+          <img class="screen" id="screen-a" alt="" src="assets/screens/lecture-clean.png">
+          <img class="screen" id="screen-b" alt="" src="">
+          <svg class="chalk" id="chalk" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <filter id="dry" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="3" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="1.1"/>
+              </filter>
+            </defs>
+            <g id="lasso-group"></g>
+            <g id="marks-group"></g>
+            <circle class="halo" id="halo" r="11"/>
+          </svg>
+          <div id="tags"></div>
+          <div class="tag heard" id="heard"></div>
+          <div class="caption-bar" id="caption"><span class="n" id="caption-n">1/2</span><span id="caption-text"></span></div>
+          <img class="stub" id="stub" alt="" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 46'%3E%3Cg transform='rotate(-40 23 23)'%3E%3Crect x='6' y='17.5' width='34' height='11' rx='3.2' fill='%23fac74f' stroke='%23211c19' stroke-width='1.4'/%3E%3Crect x='6' y='17.5' width='34' height='3.5' rx='2' fill='%23fff' opacity='.3'/%3E%3Crect x='6' y='17.5' width='6' height='11' rx='3' fill='%23faf2db' opacity='.8'/%3E%3C/g%3E%3C/svg%3E">
+        </div>
+        <div class="demo-controls" id="demo-controls" role="group" aria-label="Pick a screen">
+          <button class="chip" data-scene="lecture" aria-pressed="true">Lecture</button>
+          <button class="chip" data-scene="dashboard" aria-pressed="false">Dashboard</button>
+          <button class="chip" data-scene="code" aria-pressed="false">Code</button>
+          <button class="chip" data-scene="diagram" aria-pressed="false">Diagram</button>
+          <button class="chip" data-scene="sheet" aria-pressed="false">Spreadsheet</button>
+          <span class="small" id="demo-status">The chalk is drawing what Frizzle would say and point at.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Hold. Talk. Let go.</h2>
+        <p class="lede">There's no window to open and nothing to paste. Frizzle lives in the menu bar and waits for the chord.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="glyph" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="16" height="16" rx="4"/><rect x="24" y="12" width="16" height="16" rx="4"/><path d="M9 20h6M29 17v6M26 20h6"/></svg>
+          </div>
+          <div class="num">1</div>
+          <h3>Hold ⌥⌘ and ask.</h3>
+          <p>The menu bar icon grows a ring to show it's listening, and your words appear by the chalk as they're heard. Drag a loop around the part you mean if that helps.</p>
+        </div>
+        <div class="step">
+          <div class="glyph" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="34" height="24" rx="4"/><path d="M14 36h16M22 32v4M11 16h14M11 22h20"/></svg>
+          </div>
+          <div class="num">2</div>
+          <h3>Let go.</h3>
+          <p>Frizzle takes one look at the screen, reads the text on it, and works out an answer. Nothing happens on a quiet release: a stray press never turns into a lesson.</p>
+        </div>
+        <div class="step">
+          <div class="glyph" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30c6-9 14-9 20 0 4 6 8 6 10 2"/><path d="M28 10l6 6-16 16-7 1 1-7z"/></svg>
+          </div>
+          <div class="num">3</div>
+          <h3>Listen, and watch the chalk.</h3>
+          <p>It answers your actual question first, one sentence at a time. Each sentence draws at most one mark, the moment the words name it. Press the chord again to cut it off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="points">
+    <div class="wrap">
+      <div class="feature">
+        <div class="shot">
+          <img src="assets/screens/dashboard.png" alt="A revenue dashboard. Frizzle has circled the Q3 bars in yellow with the caption 'cost up 18%', and drawn a blue arrow from them to the gross margin tile." width="1440" height="900" loading="lazy">
+        </div>
+        <div class="copy">
+          <div class="asked"><svg class="mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><q>why did margin dip in Q3?</q></div>
+          <h2>It points while it talks.</h2>
+          <p>A sentence and a mark go together. When Frizzle says "the Q3 bars", the circle lands on the Q3 bars as it says it. When a sentence doesn't name anything on screen, nothing is drawn. A wrong mark teaches the wrong thing; no mark costs nothing.</p>
+          <p>Marks stay with the window if you move it, and fade if you scroll the content away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="followups">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="shot">
+          <img src="assets/screens/code.png" alt="A Python file in an editor. Frizzle has boxed 'range(len(items) - 1)' in pink with the caption 'skips the last item', and underlined the for line with the caption 'for item in items'." width="1440" height="900" loading="lazy">
+        </div>
+        <div class="copy">
+          <div class="asked"><svg class="mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><q>why does the total come out short?</q></div>
+          <h2>Ask the way you would in class.</h2>
+          <p>Frizzle remembers what it said and what it pointed at, for this sitting. Short answers for short questions, longer ones when the question earns it.</p>
+          <div class="followups" aria-label="Things you can say next">
+            <span>why?</span><span>show another example</span><span>what about the other term?</span><span>that's not what I meant</span><span>explain it another way</span><span>repeat that</span><span>slower</span><span>skip ahead</span>
+          </div>
+          <p class="small">"Repeat that", "slower" and "skip ahead" happen instantly, without asking the model again. Start fresh any time with New conversation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="circle">
+    <div class="wrap">
+      <div class="feature">
+        <div class="shot">
+          <img src="assets/screens/diagram.png" alt="A PDF diagram of an animal cell. A thin dashed loop drawn by the student surrounds one mitochondrion; Frizzle's yellow chalk circle sits inside it with the caption 'makes ATP'." width="1440" height="900" loading="lazy">
+        </div>
+        <div class="copy">
+          <div class="asked"><svg class="mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><q>what does this part do?</q></div>
+          <h2>Circle what you mean.</h2>
+          <p>While you're holding the chord, drag a loop around the thing your question is about. It never reaches the app underneath. Your loop stays thin and dashed, so it never looks like one of Frizzle's marks.</p>
+          <p>With nothing circled, Frizzle works it out from the question, the window you're in, and what you asked before. If it genuinely can't tell, it asks which one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sketch">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="shot">
+          <img src="assets/screens/physics.png" alt="A physics problem set in Preview. Beside it, Frizzle's green scratch board shows three chalk lines: v = u + at, v = 0 + 9.8 × 3.0, and v = 29.4 m/s in yellow." width="1440" height="900" loading="lazy">
+        </div>
+        <div class="copy">
+          <div class="asked"><svg class="mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><q>how do I solve question 2?</q></div>
+          <h2>When the answer isn't on the screen, it sketches.</h2>
+          <p>Frizzle gets its own scratch board, placed where it won't cover what you're reading. Equation steps appear one line at a time as they're spoken. It can draw a pair of axes and a curve, label the parts of something, or lay out boxes and arrows for how data flows.</p>
+          <p>Everything it draws is built from a small set of shapes, so a formula is plotted, not guessed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="private">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Private by default. Quiet by design.</h2>
+        <p class="lede">Frizzle only looks when you hold the chord, and keeps nothing of what it saw.</p>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="28" height="20" rx="4"/><path d="M14 34h12M20 29v5M12 19h6M12 24h12"/></svg>
+          <h3>Only when you ask.</h3>
+          <p>Frizzle looks at the window you ask about, at the moment you ask, and at nothing else. That picture and your question go through Frizzle's server to the AI service that writes the lesson, for that answer only. What you say is recognized on your Mac.</p>
+        </div>
+        <div class="fact">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="13"/><path d="M20 12v8l5 3"/></svg>
+          <h3>Nothing is recorded or kept.</h3>
+          <p>A screenshot lives only for the question it answers. The conversation is held in memory for the sitting and gone when you quit. With Follow along on, the last two minutes of the Mac's audio stay in memory so "what did she just say?" works.</p>
+        </div>
+        <div class="fact">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10a4 4 0 0 1 4-4h18a4 4 0 0 1 4 4v13a4 4 0 0 1-4 4H17l-7 6v-6h-3z"/><path d="M13 14h14M13 19h9"/></svg>
+          <h3>Not an agent.</h3>
+          <p>Frizzle never clicks, types, opens files, or runs on its own. It explains. The only thing it ever draws on is the glass in front of your screen, and Esc clears it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="voice" class="board-section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A voice you'd want to listen to.</h2>
+        <p class="lede">Every lesson is read aloud in a warm, natural voice that keeps step with the chalk. Pick the one you like in Settings. With no connection, a voice that runs on your Mac takes over.</p>
+      </div>
+      <div class="spoken" aria-label="How math is read aloud">
+        <p>Math is read the way a teacher says it, never the way a robot spells it.</p>
+        <div class="row"><span class="w">dy/dx</span><span class="s">"d y d x"</span></div>
+        <div class="row"><span class="w">u³</span><span class="s">"u cubed"</span></div>
+        <div class="row"><span class="w">(3x² + 1)⁴</span><span class="s">"the quantity three x squared plus one, to the fourth"</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Free to start. Pro if you want more.</h2>
+        <p class="lede">Sign in with Apple or Google and ask. A free account has five lessons a day; pay only if you want more.</p>
+      </div>
+      <div class="price">
+        <div class="card">
+          <div class="big">Free</div>
+          <p>Everything Frizzle does.</p>
+          <ul>
+            <li>Five lessons a day</li>
+            <li>Every lesson read aloud, in the voice you pick</li>
+            <li>Follow along, circling, follow-ups</li>
+          </ul>
+        </div>
+        <div class="card yellow">
+          <div class="sticker">$9.99 a month</div>
+          <div class="big">Frizzle Pro</div>
+          <p>Billed monthly. Cancel any time.</p>
+          <ul>
+            <li>Fifteen lessons a day, three times the free plan</li>
+            <li>Every lesson read aloud, in the voice you pick</li>
+            <li>On every Mac you sign in on</li>
+          </ul>
+          <a class="btn" href="#download" id="download-pricing" data-download>Get Frizzle for Mac</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions people ask.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>What does it need from my Mac?</summary>
+          <p>macOS 27 on Apple silicon, and an internet connection. Frizzle asks for Screen Recording (to see the window you ask about) and Microphone (to hear the question). Both are only used while you hold the chord.</p>
+        </details>
+        <details>
+          <summary>Does it work on anything, or just math?</summary>
+          <p>Anything with text or a picture on it: lectures and slides, PDFs and papers, dashboards and spreadsheets, code and terminals, diagrams, settings screens, documents. It reads the text on screen and looks at the picture, so it does best when what you're asking about is visible.</p>
+        </details>
+        <details>
+          <summary>What does Frizzle see, and where does it go?</summary>
+          <p>Nothing until you ask. When you hold the keys, Frizzle takes one picture of the window you're asking about and sends it, with your question, through Frizzle's server to the AI service that writes the lesson. The lesson's words go the same way to be read aloud; your screen never does. Frizzle's server passes these on and keeps neither. What you say is turned into words on your Mac, and no recording is kept. Frizzle counts a few anonymous things, like how long an answer took, which you can switch off in Settings. Your questions are shared with us only if you turn that on.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>Frizzle is free to download, and a free account has five lessons a day, each one read aloud. Frizzle Pro is $9.99 a month for fifteen lessons a day. It's billed monthly and you can cancel any time.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="download">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icon-256.png" alt="" width="34" height="34">Frizzle</a>
+    <nav aria-label="Footer">
+      <a href="#how">How it works</a>
+      <a href="#private">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn" href="#download" id="download-footer" data-download>Download Frizzle for Mac</a>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="assets/scenes.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sparkle's update feed for the website build (SUFeedURL). scripts/release.sh prints
+     the <item> to add for each release; the newest goes first. -->
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Frizzle</title>
+    <link>https://frizzleapp.github.io/appcast.xml</link>
+    <language>en</language>
+  </channel>
+</rss>
